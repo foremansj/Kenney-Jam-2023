@@ -8,16 +8,20 @@ public class Movement : MonoBehaviour
     Rigidbody playerRigidbody;
     Animator playerAnimator;
     CollisionHandler collisionHandler;
-    [SerializeField] LayerMask groundLayer;
-    bool isTouchingGround;
-    bool isJumping;
+    //bool isTouchingGround;
     
-    Vector3 moveInput;
+    
+    [Header("Movement")]
     [SerializeField] float rotateSpeed;
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpHeight = 10f;
+    Vector3 moveInput;
+    bool isJumping;
+    
+    [Header("Ground Check")]
     [SerializeField] GameObject orientor;
-    [SerializeField] float groundCheckDistance = 2f; 
+    //[SerializeField] float groundCheckDistance = 2f; 
+    
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -31,7 +35,7 @@ public class Movement : MonoBehaviour
         this.transform.Rotate(0, moveInput.x * rotateSpeed * Time.deltaTime, 0);
         ProcessRunning();
         ProcessJumping();
-        GroundCheck();
+        //GroundCheck();
     }
 
     void OnMove(InputValue value)
@@ -86,7 +90,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void GroundCheck()
+    /*void GroundCheck()
     {
         if(Physics.Raycast(orientor.transform.position, Vector3.down, groundCheckDistance))
         {
@@ -99,6 +103,6 @@ public class Movement : MonoBehaviour
             isTouchingGround = false;
             Debug.Log("Ray missss");
         }
-    }
+    }*/
 
 }
