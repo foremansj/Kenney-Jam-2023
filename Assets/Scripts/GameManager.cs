@@ -5,19 +5,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] MapController mapController;
+    [SerializeField] UIController mapController;
     [SerializeField] List<GameObject> fogOfWarBlocks;
     [SerializeField] List<GameObject> scenicCheckpoints;
+    int remainingCheckpoints;
+
     void Start()
     {
-        
+        remainingCheckpoints = scenicCheckpoints.Count;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void DisableFogOfWar(GameObject checkpoint)
     {
@@ -28,8 +25,14 @@ public class GameManager : MonoBehaviour
                 if(checkpoint.ToString() == fogOfWarBlocks[i].ToString())
                 {
                     fogOfWarBlocks[i].SetActive(false);
+                    remainingCheckpoints--;
                 }
             }
         }
+    }
+
+    public int GetRemainingCheckpoints()
+    {
+        return remainingCheckpoints;
     }
 }

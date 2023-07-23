@@ -39,4 +39,9 @@ public class ButtonController : MonoBehaviour
     {
         Application.OpenURL(link);
     }
+
+    public void RespawnButton()
+    {
+        
+    }
 }
