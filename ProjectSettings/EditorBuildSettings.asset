@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: 962f157edeccd9243af859566ff98548
   - enabled: 1
-    path: Assets/Scenes/Test Environment 1.unity
+    path: Assets/Scenes/Port City.unity
     guid: 97da0f6320a5369458086f39344da3ab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f3df2688aef75774eb2502c6e20b7108, type: 2}

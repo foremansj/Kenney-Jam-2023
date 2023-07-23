@@ -16,7 +16,6 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Debug.Log("checkpoint reached");
             gameManager.DisableFogOfWar(this.gameObject);
             this.gameObject.SetActive(false);
             //Destroy(this.gameObject);

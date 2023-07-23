@@ -12,6 +12,10 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] Canvas mapCanvas;
     [SerializeField] TextMeshProUGUI checkpointsText;
+    [SerializeField] GameObject keanuReevesButton;
+    [SerializeField] GameObject normalJumpButton;
+    [SerializeField] GameObject rickyBobbyButton;
+    [SerializeField] GameObject normalMoveButton;
 
     //static UIController instance; this is for the singleton
     GameManager gameManager;
@@ -50,25 +54,42 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        if(!isPaused)
+        if (!isPaused)
         {
-            if(Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M))
             {
                 ToggleMap();
             }
         }
-        
-        if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                TogglePause();
-            }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
 
         checkpointsText.text = gameManager.GetRemainingCheckpoints().ToString();
+
+        EnableFunButtons();
+    }
+
+    private void EnableFunButtons()
+    {
+        int remainingCheckpoints = gameManager.GetRemainingCheckpoints();
+        if (remainingCheckpoints < 13)
+        {
+            rickyBobbyButton.SetActive(true);
+            normalMoveButton.SetActive(true);
+        }
+
+        if (remainingCheckpoints < 7)
+        {
+            keanuReevesButton.SetActive(true);
+            normalJumpButton.SetActive(true);
+        }
     }
 
     void ToggleMap()
     {
-        //Debug.Log("action");
         isMapOpen = !isMapOpen;
         if(isMapOpen)
         {
@@ -81,26 +102,6 @@ public class UIController : MonoBehaviour
             worldMap.SetActive(false);
         }
     }
-
-    /*void Pause()
-    {
-        Debug.Log("pausing");
-        pauseMenu.SetActive(true);
-        mapCanvas.enabled = false;
-        Time.timeScale = 0;
-
-        isPaused = true;
-    }
-
-    public void Resume()
-    {
-        pauseMenu.SetActive(false);
-        mapCanvas.enabled = true;
-        isPaused = false;
-        Time.timeScale = 1;
-
-        
-    }*/
 
     public void TogglePause()
     {

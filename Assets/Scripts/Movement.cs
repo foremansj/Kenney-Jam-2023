@@ -91,6 +91,32 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void ChangeMoveSpeed(bool fast)
+    {
+        if(fast)
+        {
+            moveSpeed = 75f;
+        }
+
+        if(!fast)
+        {
+            moveSpeed = 15f;
+        }
+    }
+
+    public void ChangeJumpHeight(bool keanu)
+    {
+        if(keanu)
+        {
+            jumpHeight = 100f;
+        }
+
+        if(!keanu)
+        {
+            jumpHeight = 10f;
+        }
+    }
+
     /*void GroundCheck()
     {
         if(Physics.Raycast(orientor.transform.position, Vector3.down, groundCheckDistance))

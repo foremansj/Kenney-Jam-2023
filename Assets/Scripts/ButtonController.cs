@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-    string gameScene = "Test Environment 1";
+    string gameScene = "Port City";
     string howToPlayScene = "How To Play";
     string creditsScene = "Credits";
 
     string mainMenuScene = "Start Menu";
+    Movement movement;
     
     void Awake()
     {
-
+        movement = FindObjectOfType<Movement>();
     }
     public void StartGameButton()
     {
@@ -40,8 +41,23 @@ public class ButtonController : MonoBehaviour
         Application.OpenURL(link);
     }
 
-    public void RespawnButton()
+    public void RickyBobby()
     {
-        
+        movement.ChangeMoveSpeed(true);
+    }
+
+    public void NormalSpeed()
+    {
+        movement.ChangeMoveSpeed(false);
+    }
+
+    public void KeanuReeves()
+    {
+        movement.ChangeJumpHeight(true);
+    }
+
+    public void NormalJump()
+    {
+        movement.ChangeJumpHeight(false);
     }
 }

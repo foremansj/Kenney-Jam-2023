@@ -40,7 +40,7 @@ public class AudioHandler : MonoBehaviour
                 audioSource.Play();
                 break;
                 
-                case int n when (n <=7 && n > 0):
+                case int n when (n <=7 && n > 1):
                 audioSource.clip = backgroundSongs[2];
                 audioSource.volume = 0.45f;
                 audioSource.Play();

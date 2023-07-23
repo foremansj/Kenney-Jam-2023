@@ -8,11 +8,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIController mapController;
     [SerializeField] List<GameObject> fogOfWarBlocks;
     [SerializeField] List<GameObject> scenicCheckpoints;
+    [SerializeField] GameObject jumpingPuzzle;
     int remainingCheckpoints;
 
+    void Awake() 
+    {
+        jumpingPuzzle.SetActive(false);
+    }
     void Start()
     {
         remainingCheckpoints = scenicCheckpoints.Count;
+    }
+
+    void Update() 
+    {
+        if(remainingCheckpoints <=1 )
+        {
+            jumpingPuzzle.SetActive(true);
+        }
     }
     
 
