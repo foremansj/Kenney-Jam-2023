@@ -5,11 +5,11 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     
-    SceneManager sceneManager;
+    GameManager gameManager;
 
     void Awake()
     {
-        sceneManager = FindObjectOfType<SceneManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -17,11 +17,9 @@ public class Checkpoint : MonoBehaviour
         if(other.tag == "Player")
         {
             Debug.Log("checkpoint reached");
-            sceneManager.DisableFogOfWar(this.gameObject);
-            Destroy(this.gameObject);
+            gameManager.DisableFogOfWar(this.gameObject);
+            this.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
-
     }
-
-
 }

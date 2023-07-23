@@ -7,21 +7,16 @@ using UnityEngine.UI;
 public class MapController : MonoBehaviour
 {
     [SerializeField] GameObject worldMap;
+    [SerializeField] GameObject miniMap;
     [SerializeField] 
     bool isMapOpen = false;
     
     void Awake() 
     {
         worldMap.SetActive(false);
-        
+        miniMap.SetActive(true);
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.M))
@@ -36,10 +31,12 @@ public class MapController : MonoBehaviour
         isMapOpen = !isMapOpen;
         if(isMapOpen)
         {
+            miniMap.SetActive(false);
             worldMap.SetActive(true);
         }
         else
         {
+            miniMap.SetActive(true);
             worldMap.SetActive(false);
         }
     }

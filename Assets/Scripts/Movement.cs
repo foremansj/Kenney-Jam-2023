@@ -73,6 +73,7 @@ public class Movement : MonoBehaviour
     void ApplyMovement(float movementThisFrame)
     {
         playerRigidbody.transform.Translate(Vector3.forward * movementThisFrame * Time.deltaTime);
+        //playerRigidbody.velocity += Vector3.forward * movementThisFrame * Time.deltaTime;
     }
 
     void ProcessJumping()
