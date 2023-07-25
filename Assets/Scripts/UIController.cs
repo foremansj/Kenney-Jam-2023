@@ -16,11 +16,14 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject normalJumpButton;
     [SerializeField] GameObject rickyBobbyButton;
     [SerializeField] GameObject normalMoveButton;
+    [SerializeField] GameObject pauseMenuAlertText;
 
     //static UIController instance; this is for the singleton
     GameManager gameManager;
     bool isMapOpen = false;
     bool isPaused = false;
+    bool hasDisplayedRickyAlert = false;
+    bool hasDisplayedKeanuAlert = false;
     float previousTimeScale;
     
     void Awake() 
@@ -74,18 +77,37 @@ public class UIController : MonoBehaviour
 
     private void EnableFunButtons()
     {
+        
         int remainingCheckpoints = gameManager.GetRemainingCheckpoints();
         if (remainingCheckpoints < 13)
         {
             rickyBobbyButton.SetActive(true);
             normalMoveButton.SetActive(true);
+            if(!hasDisplayedRickyAlert)
+            {
+                StartCoroutine(PauseMenuAlert());
+                hasDisplayedRickyAlert = true;
+            }
         }
 
-        if (remainingCheckpoints < 7)
+        if (remainingCheckpoints <= 1)
         {
             keanuReevesButton.SetActive(true);
             normalJumpButton.SetActive(true);
+            if(!hasDisplayedKeanuAlert)
+            {
+                StartCoroutine(PauseMenuAlert());
+                hasDisplayedKeanuAlert = true;
+            }
+            
         }
+    }
+
+    IEnumerator PauseMenuAlert()
+    {
+        pauseMenuAlertText.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        pauseMenuAlertText.SetActive(false);
     }
 
     void ToggleMap()

@@ -11,10 +11,16 @@ public class ButtonController : MonoBehaviour
 
     string mainMenuScene = "Start Menu";
     Movement movement;
+    UIController uIController;
     
     void Awake()
     {
         movement = FindObjectOfType<Movement>();
+    }
+
+    void Start()
+    {
+        uIController = GetComponent<UIController>();
     }
     public void StartGameButton()
     {
@@ -44,20 +50,24 @@ public class ButtonController : MonoBehaviour
     public void RickyBobby()
     {
         movement.ChangeMoveSpeed(true);
+        uIController.TogglePause();
     }
 
     public void NormalSpeed()
     {
         movement.ChangeMoveSpeed(false);
+        uIController.TogglePause();
     }
 
     public void KeanuReeves()
     {
         movement.ChangeJumpHeight(true);
+        uIController.TogglePause();
     }
 
     public void NormalJump()
     {
         movement.ChangeJumpHeight(false);
+        uIController.TogglePause();
     }
 }
