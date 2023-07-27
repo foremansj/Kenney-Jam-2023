@@ -29,7 +29,7 @@ public class AudioHandler : MonoBehaviour
             {
                 case int n when (n <= 15 && n > 12):
                 //audioSource.PlayOneShot(backgroundSongs[0]);
-                audioSource.clip = backgroundSongs[0];
+                audioSource.clip = backgroundSongs[1];
                 audioSource.volume = 0.25f;
                 audioSource.Play();
                 break;
