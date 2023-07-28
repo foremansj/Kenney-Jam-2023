@@ -26,12 +26,12 @@ public class SunAndMoon : MonoBehaviour
             Camera.main.backgroundColor = ColorFromHex("FFF4D6");
             break;
 
-            case int n when (n <= 12 && n > 7):
+            case int n when (n <= 12 && n > 8):
             lightSource.color = ColorFromHex("FFD04E");
             Camera.main.backgroundColor = ColorFromHex("FFBC00");
             break;
             
-            case int n when (n <=7 && n > 1):
+            case int n when (n <=8 && n > 0):
             lightSource.color = ColorFromHex("CB0000");
             Camera.main.backgroundColor = ColorFromHex("65002A");
             break;

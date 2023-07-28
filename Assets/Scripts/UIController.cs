@@ -90,7 +90,7 @@ public class UIController : MonoBehaviour
             }
         }
 
-        if (remainingCheckpoints <= 1)
+        if (remainingCheckpoints <= 0)
         {
             keanuReevesButton.SetActive(true);
             normalJumpButton.SetActive(true);

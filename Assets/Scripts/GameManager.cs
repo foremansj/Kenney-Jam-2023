@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> scenicCheckpoints;
     [SerializeField] GameObject jumpingPuzzle;
     int remainingCheckpoints;
+    AudioHandler audioHandler;
 
     void Awake() 
     {
         jumpingPuzzle.SetActive(false);
+        audioHandler = FindObjectOfType<AudioHandler>();
     }
     void Start()
     {

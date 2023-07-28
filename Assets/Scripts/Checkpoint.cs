@@ -6,6 +6,7 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] float checkpointActivationDistance; 
     GameManager gameManager;
+    [SerializeField] ParticleSystem checkpointParticles;
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -20,6 +21,8 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Vector3 thisPosition = this.transform.position;
+            Instantiate(checkpointParticles, new Vector3(thisPosition.x, thisPosition.y - 1, thisPosition.z), Quaternion.Euler(-90, 0, 0));
             gameManager.DisableFogOfWar(this.gameObject);
             this.gameObject.SetActive(false);
             //Destroy(this.gameObject);
